@@ -12,4 +12,5 @@ import com.generation.donare.model.Postagem;
 public interface PostagemRepository extends JpaRepository<Postagem, Long> {
     
 	public List<Postagem> findAllByTextoContainingIgnoreCase(@Param("texto")String texto);
+
 }
