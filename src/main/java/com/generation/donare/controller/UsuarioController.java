@@ -44,12 +44,12 @@ public class UsuarioController {
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
-	@GetMapping("buscaUsuario/{nome}")
+	@GetMapping("buscaNome/{nome}")
 	public ResponseEntity<List<Usuario>> getByNome(@PathVariable String nome) {
 		return ResponseEntity.ok(usuarioRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
-	@GetMapping("buscaUsuario/{nickname}")
+	@GetMapping("buscaNickname/{nickname}")
 	public ResponseEntity<List<Usuario>> getByNickname(@PathVariable String nickname) {
 		return ResponseEntity.ok(usuarioRepository.findAllByNicknameContainingIgnoreCase(nickname));
 	}

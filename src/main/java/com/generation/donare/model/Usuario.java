@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -31,24 +32,21 @@ public class Usuario {
 	private String usuario;
 	
 	@NotBlank(message = "O campo senha é obrigatório.")
-	@Size(min = 8, max = 255, message = "A senha deve conter de 5 a 255 caracteres.")
+	@Size(min = 8, max = 255, message = "A senha deve conter de 8 a 255 caracteres.")
 	private String senha;
 	
 	private String foto;
 	
 	@NotBlank(message = "O campo nickname é obrigatório.")
-	@Size(min = 10, max = 255, message = "O Nickname deve conter de 10 a 255 caracteres.")
+	@Size(min = 5, max = 255, message = "O Nickname deve conter de 5 a 255 caracteres.")
 	private String nickname;
 	
-	
-	@NotBlank(message = "O campo tipo é obrigatório.")
-	@Size(min = 11, max = 45, message = "O tipo deve conter de 11 a 45 caracteres.")
+	@NotNull
 	private int tipo;
 	
 	@OneToMany(mappedBy="usuario",cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagens;
-
 
 	public Long getId() {
 		return id;
