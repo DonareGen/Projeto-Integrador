@@ -30,9 +30,9 @@ public class Tema {
 	@Size(min = 10, max = 255, message = "A descrição deve conter de 10 a 255 caracteres.")
 	private String descricao;
 	
-	/*@OneToMany(mappedBy ="tema", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy ="tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tema")
-	private List<Postagem> postagens;*/
+	private List<Postagem> postagens;
 
 	public Long getId() {
 		return id;
@@ -58,13 +58,13 @@ public class Tema {
 		this.descricao = descricao;
 	}
 
-	/*public List<Postagem> getPostagens() {
+	public List<Postagem> getPostagens() {
 		return postagens;
 	}
 
 	public void setPostagens(List<Postagem> postagens) {
 		this.postagens = postagens;
-	}*/
+	}
 	
 	
 }

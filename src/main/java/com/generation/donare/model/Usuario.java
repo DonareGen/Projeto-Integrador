@@ -1,9 +1,15 @@
 package com.generation.donare.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -37,18 +43,20 @@ public class Usuario {
 	
 	@NotBlank(message = "O campo tipo é obrigatório.")
 	@Size(min = 11, max = 45, message = "O tipo deve conter de 11 a 45 caracteres.")
-	private String tipo;
+	private int tipo;
+	
+	@OneToMany(mappedBy="usuario",cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("usuario")
+	private List<Postagem> postagens;
 
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getNome() {
 		return nome;
@@ -58,7 +66,6 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	public String getUsuario() {
 		return usuario;
@@ -100,17 +107,22 @@ public class Usuario {
 	}
 
 
-	public String getTipo() {
+	public int getTipo() {
 		return tipo;
 	}
 
 
-	public void setTipo(String tipo) {
+	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
-	
-	
-	
+
+	public List<Postagem> getPostagens() {
+		return postagens;
+	}
+
+	public void setPostagens(List<Postagem> postagens) {
+		this.postagens = postagens;
+	}
 	
 	
 }

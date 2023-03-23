@@ -34,9 +34,13 @@ public class Postagem {
 	
 	private String doacao;
 	
-	/*@ManyToOne
+	@ManyToOne
 	@JsonIgnoreProperties("postagem")
-	private Tema tema_id;*/
+	private Tema tema_id;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("usuario")
+	private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -94,13 +98,21 @@ public class Postagem {
 		this.doacao = doacao;
 	}
 
-	/*public Tema getTema_id() {
+	public Tema getTema_id() {
 		return tema_id;
 	}
 
 	public void setTema_id(Tema tema_id) {
 		this.tema_id = tema_id;
-	}*/
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	
 	
 }
