@@ -36,7 +36,7 @@ public class Postagem {
 	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
-	private Tema tema_id;
+	private Tema tema;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("usuario")
@@ -99,11 +99,11 @@ public class Postagem {
 	}
 
 	public Tema getTema_id() {
-		return tema_id;
+		return tema;
 	}
 
-	public void setTema_id(Tema tema_id) {
-		this.tema_id = tema_id;
+	public void setTema_id(Tema tema) {
+		this.tema = tema;
 	}
 
 	public Usuario getUsuario() {
