@@ -67,15 +67,17 @@ public class UsuarioController {
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 	
-	@PostMapping
+	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> post(@Valid @RequestBody Usuario usuario) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
+		return usuarioService.cadastro(usuario)
+				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))
+	            .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	
-	@PutMapping
+	@PutMapping("/atualizar")
 	public ResponseEntity<Usuario> put(@Valid @RequestBody Usuario usuario) {
-		return usuarioRepository.findById(usuario.getId())
-				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.save(usuario)))
+		return usuarioService.atualizarUsuario(usuario)
+				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
