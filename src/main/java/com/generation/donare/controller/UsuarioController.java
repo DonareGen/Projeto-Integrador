@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+
 import com.generation.donare.model.Postagem;
 import com.generation.donare.model.Usuario;
 import com.generation.donare.repository.PostagemRepository;
@@ -30,6 +31,7 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 
+	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
