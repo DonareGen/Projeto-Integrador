@@ -21,8 +21,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.generation.donare.model.Postagem;
 import com.generation.donare.model.Usuario;
+import com.generation.donare.model.UsuarioLogin;
 import com.generation.donare.repository.PostagemRepository;
 import com.generation.donare.repository.UsuarioRepository;
+import com.generation.donare.service.UsuarioService;
 
 import jakarta.validation.Valid;
 
@@ -31,11 +33,13 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 
+	@Autowired
+	private UsuarioService usuarioService; 
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	@GetMapping
+	@GetMapping("/all")
 	public ResponseEntity<List<Usuario>> getAll() {
 		return ResponseEntity.ok(usuarioRepository.findAll());
 	}
@@ -54,6 +58,13 @@ public class UsuarioController {
 	@GetMapping("buscaNickname/{nickname}")
 	public ResponseEntity<List<Usuario>> getByNickname(@PathVariable String nickname) {
 		return ResponseEntity.ok(usuarioRepository.findAllByNicknameContainingIgnoreCase(nickname));
+	}
+	
+	@PostMapping("/logar")
+	public ResponseEntity<UsuarioLogin> login(@RequestBody Optional<UsuarioLogin> usuarioLogin){
+		return usuarioService.autenticarUsuario(usuarioLogin)
+				.map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 	
 	@PostMapping
