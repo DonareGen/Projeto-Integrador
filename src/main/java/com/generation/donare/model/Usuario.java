@@ -35,7 +35,7 @@ public class Usuario {
 	private String usuario;
 	
 	@NotBlank(message = "O campo senha é obrigatório.")
-	@Size(min = 8, max = 16, message = "A senha deve conter de 8 a 255 caracteres.")
+	@Size(min = 8, max = 255, message = "A senha deve conter de 8 a 255 caracteres.")
 	private String senha;
 	
 	private String foto;
