@@ -29,7 +29,7 @@ public class Tema {
 	@NotBlank(message = "O campo descrição é obrigatório")
 	@Size(min = 10, max = 255, message = "A descrição deve conter de 10 a 255 caracteres.")
 	private String descricao;
-	
+	 
 	@OneToMany(mappedBy ="tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagens;
