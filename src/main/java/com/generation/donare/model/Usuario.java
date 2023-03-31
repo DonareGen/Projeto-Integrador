@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +18,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name ="tb_usuarios")
+@Table(name = "tb_usuarios")
 public class Usuario {
 
 	@Id
@@ -25,21 +26,22 @@ public class Usuario {
 	private Long id;
 	
 	@NotBlank(message = "O campo nome é obrigatório.")
-	@Size(min = 5, max = 255, message = "O nome deve conter de 5 a 255 caracteres.")
+	@Size(min = 5, message = "O nome deve conter de 5 a 255 caracteres.")
 	private String nome;
 	
+	@Schema(example = "email@email.com")
 	@NotBlank(message = "O campo usuário é obrigatório.")
 	@Email(message = "O campo usuário precisa conter um e-mail válido")
 	private String usuario;
 	
 	@NotBlank(message = "O campo senha é obrigatório.")
-	@Size(min = 8, max = 255, message = "A senha deve conter de 8 a 255 caracteres.")
+	@Size(min = 8, max = 16, message = "A senha deve conter de 8 a 255 caracteres.")
 	private String senha;
 	
 	private String foto;
 	
 	@NotBlank(message = "O campo nickname é obrigatório.")
-	@Size(min = 5, max = 255, message = "O Nickname deve conter de 5 a 255 caracteres.")
+	@Size(min = 5, max = 16, message = "O Nickname deve conter de 5 a 255 caracteres.")
 	private String nickname;
 	
 	@NotNull

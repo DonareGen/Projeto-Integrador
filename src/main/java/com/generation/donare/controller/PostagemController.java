@@ -30,7 +30,8 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PostagemController {
 	
-	@Autowired PostagemService postagemService;
+	@Autowired
+	private PostagemService postagemService;
 
 	@Autowired
 	private PostagemRepository postagemRepository;
@@ -49,7 +50,7 @@ public class PostagemController {
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
-	@GetMapping("buscaTexto/{texto}")
+	@GetMapping("/buscaTexto/{texto}")
 	public ResponseEntity<List<Postagem>> getByTexto(@PathVariable String texto) {
 		return ResponseEntity.ok(postagemRepository.findAllByTextoContainingIgnoreCase(texto));
 	}

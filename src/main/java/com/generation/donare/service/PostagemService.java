@@ -3,10 +3,12 @@ package com.generation.donare.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.generation.donare.model.Postagem;
 import com.generation.donare.repository.PostagemRepository;
 
+@Service
 public class PostagemService {
 	
 	@Autowired
