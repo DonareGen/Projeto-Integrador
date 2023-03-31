@@ -24,6 +24,7 @@ import com.generation.donare.model.Usuario;
 import com.generation.donare.model.UsuarioLogin;
 import com.generation.donare.repository.PostagemRepository;
 import com.generation.donare.repository.UsuarioRepository;
+import com.generation.donare.service.PostagemService;
 import com.generation.donare.service.UsuarioService;
 
 import jakarta.validation.Valid;
@@ -32,6 +33,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/usuarios")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
+	
+	@Autowired
+	private PostagemService postagemService;
 
 	@Autowired
 	private UsuarioService usuarioService; 
@@ -91,4 +95,13 @@ public class UsuarioController {
 
 		usuarioRepository.deleteById(id);
 	}
+	
+	//Método Curtir
+	@PutMapping("/curtir/{id}")
+	public ResponseEntity<Postagem> curtirPostagemId (@PathVariable Long id){
+		return postagemService.curtir(id)
+				.map(resposta-> ResponseEntity.ok(resposta))
+				.orElse(ResponseEntity.badRequest().build());
+	}
 }
+ 
