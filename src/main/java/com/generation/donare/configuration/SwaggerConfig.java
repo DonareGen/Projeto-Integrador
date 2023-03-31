@@ -21,15 +21,9 @@ public class SwaggerConfig {
 		return new OpenAPI()
 				.info(new Info()
 						.title("Projeto Integrador - Donare")
-						.description("Rede Social Donare")
+						.description("Rede Social Donare - Grupo 1")
 						.version("v0.0.1")
-				.contact(new Contact()
-						.name("Beatriz Cunha")
-						.url("https://github.com/Beatriz-CGomes"))
-				.contact(new Contact()
-						.name("Flavia Almeida")
-						.url("https://github.com/Flahaga"))
-						
+		
 				.license(new License()
 						.name("Generation Brasil")
 						.url("https://brazil.generation.org/")))
